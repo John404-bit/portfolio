@@ -26,4 +26,4 @@ jobs:
         run: dotnet build backend/backend.csproj --no-restore -c Release
 
       - name: Byg Docker-image
-        run: docker build ./backends
+        run: docker build ./backend
