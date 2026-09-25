@@ -1,5 +1,6 @@
 namespace backend.Models;
 
+//hvad projektet indeholder
 public class Project
 {
     public int Id { get; set; }
