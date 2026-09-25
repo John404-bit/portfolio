@@ -4,7 +4,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     platform: linux/amd64 # no arm64 image; runs via Rosetta on Apple Silicon
     ports:
-      - "1433:1433" # so you can look at the database from Azure Data Studio / VS Code
+      - "1434:1433" # host port 1434, since 1433 is used by the course's sql1 container
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=${DB_PASSWORD:?set DB_PASSWORD in .env}
