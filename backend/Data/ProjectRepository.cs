@@ -5,11 +5,11 @@ namespace backend.Data;
 
 public class ProjectRepository(DapperContext context) : IProjectRepository
 {
-    public async Task<IEnumerable<Project>> GetAllAsync()
+    public async Task<IEnumerable<Project>> GetAllAsync() //liste af projekter
     {
-        using var connection = context.CreateConnection();
-        return await connection.QueryAsync<Project>(
-            "SELECT Id, Title, Description, CreatedUtc FROM dbo.Projects");
+        using var connection = context.CreateConnection(); //åbn forbindelse
+        return await connection.QueryAsync<Project>( //kør SQL via Dapper
+            "SELECT Id, Title, Description, CreatedUtc FROM dbo.Projects"); // SQL der bliver sent til databsen
     }
 
     public async Task<Project?> GetByIdAsync(int id)

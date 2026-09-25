@@ -1,7 +1,7 @@
 using backend.Models;
 
 namespace backend.Data;
-
+//interface der hvilke metoder repositoryet skal have
 public interface IProjectRepository
 {
     Task<IEnumerable<Project>> GetAllAsync();
