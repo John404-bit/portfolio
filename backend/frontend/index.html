@@ -4,10 +4,50 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Portfolio</h1>
-  <ul id="projects"></ul>
+  <!-- Forsiden: vises når ingen sektion er valgt -->
+  <main class="home">
+    <h1>Dit Navn</h1>
+    <p class="intro">Udvikler. Jeg bygger ting med .NET og JavaScript.</p>
+
+    <nav>
+      <a class="pill work" href="#work">Work</a>
+      <a class="pill process" href="#process">Process</a>
+      <a class="pill about" href="#about">About</a>
+      <a class="pill contact" href="#contact">Contact</a>
+    </nav>
+  </main>
+
+  <!-- Sektionerne: vises kun når deres id står i adresselinjen, fx #work -->
+  <section id="work">
+    <a class="pill back" href="#">Back</a>
+    <h2>Work</h2>
+    <p id="status">Henter projekter…</p>
+    <ul id="projects"></ul>
+  </section>
+
+  <section id="process">
+    <a class="pill back" href="#">Back</a>
+    <h2>Process</h2>
+    <p>Skriv her, hvordan du arbejder: fra idé til skitse, kode, test og deploy.</p>
+  </section>
+
+  <section id="about">
+    <a class="pill back" href="#">Back</a>
+    <h2>About</h2>
+    <p>Skriv lidt om dig selv: uddannelse, hvad du er god til, og hvad du gerne vil lære.</p>
+  </section>
+
+  <section id="contact">
+    <a class="pill back" href="#">Back</a>
+    <h2>Contact</h2>
+    <p>Skriv til mig på <a href="mailto:din@mail.dk">din@mail.dk</a>.</p>
+  </section>
+
   <script src="app.js"></script>
 </body>
 </html>
