@@ -2,7 +2,12 @@ using System.Reflection;
 using DbUp;
 using Scalar.AspNetCore;
 
-var builder = WebApplication.CreateBuilder(args);
+// WebRootPath: static files are served from /frontend instead of the default /wwwroot
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    WebRootPath = "frontend"
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -31,7 +36,7 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-// The frontend (wwwroot) is served by the API itself
+// The frontend (/frontend) is served by the API itself
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
