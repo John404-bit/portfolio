@@ -1,0 +1,37 @@
+/* ---------- Navigation uden JavaScript ---------- */
+section { display: none; }                          /* alle sektioner skjult */
+section:target { display: block; }                  /* ...undtagen den i adresselinjen */
+body:has(section:target) .home { display: none; }   /* skjul forsiden, når en sektion vises */
+
+
+/* ---------- Farver og papirstruktur ---------- */
+:root {
+  --paper: #f3eee3;   /* baggrund */
+  --pill: #d9ceb2;    /* knapper */
+  --card: #fbf8f1;    /* projektkort */
+  --ink: #1a1a1a;     /* tekst og ikoner */
+  --muted: #6b645a;   /* grå tekst */
+  /* støj tegnet af en SVG-fil, der ligger direkte i CSS'en */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Figtree", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--grain), var(--paper);   /* støj ovenpå farven */
+}
+
+.home, section {
+  max-width: 900px;
+  margin: 0 auto;      /* centreret */
+  padding: 64px 16px;
+}
+
+h1 { margin: 0; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; }
+h2 { font-size: 2.5rem; font-weight: 800; margin: 40px 0 16px; }
+.intro { margin: 8px 0 40px; font-size: 1.25rem; color: var(--muted); }
+nav { display: flex; flex-wrap: wrap; gap: 16px; }
