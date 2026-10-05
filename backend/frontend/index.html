@@ -1,13 +1,112 @@
 <!doctype html>
-<html lang="da">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Portfolio</h1>
-  <ul id="projects"></ul>
+  <!-- Forsiden: vises når ingen sektion er valgt -->
+  <main class="home">
+    <h1>John Felix Schröder </h1>
+    <p class="intro">Software Engineering student at Aarhus University. I build things with .NET, C++ and JavaScript.</p>
+
+    <nav>
+      <a class="pill work" href="#work" aria-label="Work">
+      <svg class="icon hammer" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M8 10 C14 7 26 6 32 8 L31 14 C25 13 15 13 9 15 Z M18 14 L17 34 C18 36 21 36 22 34 L22 14"/>
+      </svg>
+      <span class="word" aria-hidden="true"><span style="--i:0">W</span><span style="--i:1">o</span><span style="--i:2">r</span><span style="--i:3">k</span></span>
+      </a>
+      <a class="pill process" href="#process">
+      <svg class="icon asterisk" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 5 Q21 20 19 35 M7 12 L33 27 M8 28 L32 12"/>
+      </svg>
+      Process
+      </a>  
+    <a class="pill about" href="#about">
+      <svg class="icon eyes" viewBox="0 0 40 40" aria-hidden="true">
+        <ellipse cx="12" cy="20" rx="7" ry="12"/>
+        <ellipse cx="28" cy="20" rx="7" ry="12"/>
+        <circle class="pupil" cx="13" cy="23" r="3.5"/>
+        <circle class="pupil" cx="29" cy="23" r="3.5"/>
+      </svg>
+      About
+    </a>
+    <a class="pill contact" href="#contact">
+      <svg class="icon heart" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 34 C6 25 3 15 9 10 C14 6 19 10 20 14 C22 9 27 6 32 10 C37 15 34 25 20 34 Z"/>
+      </svg>
+      Contact
+    </a>
+    </nav>
+  </main>
+
+  <!-- Sektionerne: vises kun når deres id står i adresselinjen, fx #work -->
+  <section id="work">
+    <a class="pill back" href="#">
+  <svg class="arrow" viewBox="0 0 120 30" aria-hidden="true">
+    <path pathLength="1" d="M116 16 C80 8 40 10 6 16 L16 8 L6 16 L16 24"/>
+  </svg>
+  Back
+</a>
+    <h2>Work</h2>
+    <p id="status">Loading projects…</p>
+    <ul id="projects"></ul>
+  </section>
+
+  <section id="process">
+    <a class="pill back" href="#">
+  <svg class="arrow" viewBox="0 0 120 30" aria-hidden="true">
+    <path pathLength="1" d="M116 16 C80 8 40 10 6 16 L16 8 L6 16 L16 24"/>
+  </svg>
+  Back
+</a>
+    <h2>Process</h2>
+    <p>Most of my projects are built in groups, so I am used to working in sprints with fixed deadlines and regular status meetings, planned in Jira with Scrum.</p>
+    <ol>
+      <li><strong>Plan:</strong> break the problem into small tasks and agree on who owns what.</li>
+      <li><strong>Build:</strong> write the code in small steps with Git, one branch per feature.</li>
+      <li><strong>Test:</strong> add unit tests along the way and run them in a CI pipeline.</li>
+      <li><strong>Ship:</strong> package the application with Docker, so it runs the same everywhere.</li>
+    </ol>
+    <p>I take ownership of my own part, but I also step in where the group needs extra help. As a teaching assistant I read and debug other people's code every week, which has taught me to explain clearly why something does not work.</p>
+  </section>
+
+  <section id="about">
+  <a class="pill back" href="#">
+  <svg class="arrow" viewBox="0 0 120 30" aria-hidden="true">
+    <path pathLength="1" d="M116 16 C80 8 40 10 6 16 L16 8 L6 16 L16 24"/>
+  </svg>
+  Back
+</a>
+    <h2>About</h2>
+    <p>I am a 4th-semester Software Engineering student at Aarhus University (BSc, expected 2028). I grew up in the Danish minority in Flensburg, Germany, and speak Danish, German and English.</p>
+    <p>I have built everything from an Arduino-based lighting system to an encrypted mesh network in C++ between Raspberry Pis. Right now I am working on a multiplayer dungeon crawler in Unity and this website: a .NET 10 Web API with its own SQL database and a JavaScript frontend, running in two Docker containers.</p>
+    <p>The backend is what interests me most: designing APIs, handling data and making the different components work together.</p>
+    <p>Alongside my studies I am a teaching assistant in object-oriented programming in C++. Before that I worked as an app tester at 3appy, where I learned to pay close attention to details and report bugs clearly.</p>
+    <p><strong>Skills:</strong> C, C++, C#, Python, JavaScript, HTML, SQL, React, Git, Docker, .NET, Unity, Jira, Scrum.</p>
+  </section>
+
+  <section id="contact">
+    <a class="pill back" href="#">
+  <svg class="arrow" viewBox="0 0 120 30" aria-hidden="true">
+    <path pathLength="1" d="M116 16 C80 8 40 10 6 16 L16 8 L6 16 L16 24"/>
+  </svg>
+  Back
+</a>
+    <h2>Contact</h2>
+    <p>I am always happy to talk about projects, internships or code. Feel free to reach out:</p>
+    <ul>
+      <li>Email: <a href="mailto:202411099@post.au.dk">202411099@post.au.dk</a></li>
+      <li>GitHub: <a href="https://github.com/John404-bit">github.com/John404-bit</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/john-felix-schröder-8549042b2">john-felix-schröder</a></li>
+    </ul>
+  </section>
+
   <script src="app.js"></script>
 </body>
 </html>
