@@ -1,0 +1,6 @@
+INSERT INTO dbo.Projects (Title, Description, CreatedUtc)
+VALUES
+    (N'Semester project 4',  N'Multiplayer dungeon crawler built in a group of seven. The system consists of a Unity game client, a website/storefront with user registration, and a backend server handling user data and authentication. My main responsibility is the Unity client: sprites, animation and multiplayer networking with Unity Multiplayer Services.', '2026-09-19'),    (N'LSS',                 N'Automatic light control system on Arduino using a motion sensor and a light sensor, with timer-based shutoff and a GUI with a multi-level menu. Documented in a requirements-driven report (MoSCoW, FURPS+).', '2026-06-07'),
+    (N'Semester project 3',  N'Kryppi: encrypted mesh network communication system on Raspberry Pi 5, written in C++. Uses batman-adv for routing, XOR encryption, an acknowledgment mechanism for reliable delivery, and a terminal UI (TUI).', '2026-06-07'),
+    (N'Portfolio',           N'.NET 10 Web API with its own SQL Server database and a JavaScript frontend, running in two Docker containers.', '2026-09-20'),
+    (N'LSS',                 N'Automatic light control system on Arduino using a motion sensor and a light sensor, with timer-based shutoff and a GUI with a multi-level menu. Documented in a requirements-driven report (MoSCoW, FURPS+).', '2026-06-07');
