@@ -97,3 +97,57 @@ nav { display: flex; flex-wrap: wrap; gap: 16px; }
   transform: translate(var(--x, 0px), var(--y, 0px));
   transition: transform .1s;
 }
+
+/* ---------- Contact: hjerte der banker ---------- */
+.contact:hover .heart { animation: beat .9s ease-in-out infinite; }
+@keyframes beat {
+  0%, 30%, 100% { transform: scale(1); }  /* normal størrelse */
+  15% { transform: scale(1.25); }         /* første slag: stort */
+  45% { transform: scale(1.15); }         /* andet slag: lidt mindre */
+}
+
+
+/* ---------- Back: pil der tegnes ---------- */
+.back {
+  position: relative;   /* så pilen kan placeres i forhold til knappen */
+  margin-left: 110px;   /* plads til pilen */
+  padding: 14px 28px;
+  font-size: 1.3rem;
+}
+.arrow {
+  position: absolute;
+  right: calc(100% - 16px);  /* til venstre for knappen, lidt ind over kanten */
+  top: 50%;
+  width: 120px;
+  height: 30px;
+  margin-top: -15px;         /* halv højde = lodret centreret */
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  pointer-events: none;      /* pilen må ikke "stjæle" musen fra knappen */
+}
+.arrow path {
+  stroke-dasharray: 1;   /* én streg, lige så lang som hele stien (pathLength="1") */
+  stroke-dashoffset: 1;  /* skubbet helt væk = usynlig */
+  transition: stroke-dashoffset .5s ease-out;
+}
+.back:hover .arrow path { stroke-dashoffset: 0; }  /* skubbet på plads = tegnet */
+/* ---------- Projektkort ---------- */
+#projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* så mange kolonner der er plads til */
+  gap: 16px;
+  list-style: none;   /* ingen prikker */
+  margin: 0;
+  padding: 0;
+}
+.card {
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--grain), var(--card);
+}
+.card h3 { margin: 0 0 8px; font-size: 1.3rem; }
+.card p { margin: 0 0 16px; color: var(--muted); }
+.card time { font-size: .9rem; color: var(--muted); }
+#status { color: var(--muted); }
