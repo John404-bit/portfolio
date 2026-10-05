@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="scripts/**/*.sql" />
+    <Content Include="frontend/**" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

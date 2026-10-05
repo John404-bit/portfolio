@@ -1,0 +1,153 @@
+/* ---------- Navigation uden JavaScript ---------- */
+section { display: none; }                         
+section:target { display: block; }                  
+body:has(section:target) .home { display: none; }   
+
+
+/* ---------- Farver og papirstruktur ---------- */
+:root {
+  --paper: #f3eee3;   
+  --pill: #d9ceb2;    
+  --card: #fbf8f1;    
+  --ink: #1a1a1a;     
+  --muted: #6b645a;   
+  /* støj tegnet af en SVG-fil, der ligger direkte i CSS'en */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Figtree", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--grain), var(--paper);   /* støj ovenpå farven */
+}
+
+.home, section {
+  max-width: 900px;
+  margin: 0 auto;      /* centreret */
+  padding: 64px 16px;
+}
+
+h1 { margin: 0; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; }
+h2 { font-size: 2.5rem; font-weight: 800; margin: 40px 0 16px; }
+.intro { margin: 8px 0 40px; font-size: 1.25rem; color: var(--muted); }
+nav { display: flex; flex-wrap: wrap; gap: 16px; }
+
+/* ---------- Pille-knappen ---------- */
+.pill {
+  display: inline-flex;     /* ikon og tekst ved siden af hinanden */
+  align-items: center;
+  gap: 14px;
+  padding: 18px 34px;
+  border-radius: 999px;     /* større end knappen = helt runde ender */
+  background: var(--grain), var(--pill);
+  color: var(--ink);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-decoration: none;    /* fjern link-understregning */
+  transition: transform .2s;
+}
+.pill:hover { transform: translateY(-2px); }                         /* løfter sig lidt */
+.pill:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; } /* synlig ved Tab-tasten */
+
+.icon {
+  width: 40px;
+  height: 40px;
+  fill: none;               /* kun streger, ingen udfyldning */
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;    /* runde stregender = ser håndtegnet ud */
+  stroke-linejoin: round;
+  overflow: visible;        /* animationer må gå lidt uden for boksen */
+}
+
+/* ---------- Work: hammer + hoppende bogstaver ---------- */
+.word span {
+  display: inline-block; /* transform virker ikke på almindelige inline-elementer */
+  transition: transform .3s;
+  transition-delay: calc(var(--i) * 40ms); /* 0ms, 40ms, 80ms, 120ms */
+}
+.work:hover .word span:nth-child(odd)  { transform: translateY(6px) rotate(-10deg); }  /* W og r: ned */
+.work:hover .word span:nth-child(even) { transform: translateY(-4px) rotate(8deg); }   /* o og k: op */
+
+.hammer { transform-origin: 50% 100%; }  /* drej om skaftets bund, som et håndled */
+.work:hover .hammer { animation: hammer .35s ease-in-out infinite alternate; }
+@keyframes hammer {
+  from { transform: rotate(-35deg); }
+  to   { transform: rotate(10deg); }
+}
+
+
+/* ---------- Process: stjerne der drejer ---------- */
+.asterisk { stroke-width: 4; }  /* lidt tykkere end de andre ikoner */
+.process:hover .asterisk { animation: spin 1.2s linear infinite; }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ---------- About: øjne ---------- */
+.pupil {
+  fill: var(--ink);   /* pupillerne er udfyldte, ikke streger */
+  stroke: none;
+  /* --x og --y sættes af app.js (0px hvis JS ikke har kørt endnu) */
+  transform: translate(var(--x, 0px), var(--y, 0px));
+  transition: transform .1s;
+}
+
+/* ---------- Contact: hjerte der banker ---------- */
+.contact:hover .heart { animation: beat .9s ease-in-out infinite; }
+@keyframes beat {
+  0%, 30%, 100% { transform: scale(1); }  /* normal størrelse */
+  15% { transform: scale(1.25); }         /* første slag: stort */
+  45% { transform: scale(1.15); }         /* andet slag: lidt mindre */
+}
+
+
+/* ---------- Back: pil der tegnes ---------- */
+.back {
+  position: relative;   /* så pilen kan placeres i forhold til knappen */
+  margin-left: 110px;   /* plads til pilen */
+  padding: 14px 28px;
+  font-size: 1.3rem;
+}
+.arrow {
+  position: absolute;
+  right: calc(100% - 16px);  /* til venstre for knappen, lidt ind over kanten */
+  top: 50%;
+  width: 120px;
+  height: 30px;
+  margin-top: -15px;         /* halv højde = lodret centreret */
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  pointer-events: none;      /* pilen må ikke "stjæle" musen fra knappen */
+}
+.arrow path {
+  stroke-dasharray: 1;   /* én streg, lige så lang som hele stien (pathLength="1") */
+  stroke-dashoffset: 1;  /* skubbet helt væk = usynlig */
+  transition: stroke-dashoffset .5s ease-out;
+}
+.back:hover .arrow path { stroke-dashoffset: 0; }  /* skubbet på plads = tegnet */
+/* ---------- Projektkort ---------- */
+#projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* så mange kolonner der er plads til */
+  gap: 16px;
+  list-style: none;   /* ingen prikker */
+  margin: 0;
+  padding: 0;
+}
+.card {
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--grain), var(--card);
+}
+.card h3 { margin: 0 0 8px; font-size: 1.3rem; }
+.card p { margin: 0 0 16px; color: var(--muted); }
+.card time { font-size: .9rem; color: var(--muted); }
+#status { color: var(--muted); }
