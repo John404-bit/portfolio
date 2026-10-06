@@ -110,7 +110,7 @@ nav { display: flex; flex-wrap: wrap; gap: 16px; }
 /* ---------- Back: pil der tegnes ---------- */
 .back {
   position: relative;   /* så pilen kan placeres i forhold til knappen */
-  margin-left: 110px;   /* plads til pilen */
+ /* margin-left: 110px;   /* plads til pilen */
   padding: 14px 28px;
   font-size: 1.3rem;
 }
